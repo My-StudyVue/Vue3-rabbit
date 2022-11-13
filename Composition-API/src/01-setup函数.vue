@@ -18,9 +18,9 @@ export default {
   setup() {
     console.log(this, "====setup");
     // 数据
-    const msg = "h1 Vue3";
+    const msg:string = "h1 Vue3";
     // 函数
-    const say = () => {
+    const say = ():void => {
       console.log("function Vue3");
     };
     return { msg, say };
