@@ -7,6 +7,7 @@
 </template>
 
 <script lang='ts'>
+//使用场景：有一个响应式对象数据，但是模版中只需要使用其中一项数据。
 import { reactive, toRef } from 'vue';
 
 interface Obj {

@@ -11,6 +11,7 @@
 </template>
 
 <script lang='ts'>
+//使用场景：剥离响应式对象（解构|展开），想使用响应式对象中的多个或者所有属性做为响应式数据。
 import { reactive, toRefs } from 'vue';
 
 interface Obj {
