@@ -31,7 +31,7 @@ export default {
         return age.value + 2;
       },
       // set函数，当你给计算属性设置值的时候触发
-      set: (val) => {
+      set: (val: number) => {
         age.value = val - 2;
       },
     });

@@ -1,4 +1,5 @@
 <template>
+  <h1>组合API实例</h1>
   <div>
     <div>坐标</div>
     <div>x:{{ x }}</div>

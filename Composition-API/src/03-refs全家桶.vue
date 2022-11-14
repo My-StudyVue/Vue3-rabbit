@@ -1,4 +1,5 @@
 <template>
+  <!-- 🔔 在模板中, ref 属性会自动解套, 不需要额外的 .value -->
   <table border="1">
     <tr>
       <th>姓名</th>
@@ -24,10 +25,12 @@ export default {
   name: "App",
   setup() {
     // 1.name数据
+    // 通过 ref 把普通字符串包装成响应式对象
     const name = ref<string>("猜猜我是谁");
     console.log(name, "===name");
 
     const updateName = () => {
+      // ref 真实值通过 .value 访问
       name.value = "猜猜";
     };
 
