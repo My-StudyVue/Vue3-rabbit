@@ -1,100 +1,43 @@
 <template>
   <div>
-    <p>{{ count }}</p>
+    <!-- vue2.0 获取单个元素 -->
+    <!-- 1. 通过ref属性绑定该元素 -->
+    <!-- 2. 通过this.$refs.box获取元素 -->
+    <!-- <div ref="box">我是box</div> -->
+    <!-- vue2.0 获取v-for遍历的多个元素 -->
+    <!-- 1. 通过ref属性绑定被遍历元素 -->
+    <!-- 2. 通过this.$refs.li 获取所有遍历元素  -->
+    <!-- <ul>
+      <li v-for="i in 4" :key="i" ref="li">{{i}}</li>
+    </ul> -->
 
-    <button @click="updateCount">改数字</button>
-  </div>
+    <!-- vue3.0 获取单个元素 -->
+    <div ref="box">我是box</div>
 
-  <hr />
-
-  <div>
-    <p>{{ obj.name }}</p>
-    <p>{{ obj.age }}</p>
-    <p>{{ obj.brand.name }}</p>
-
-    <button @click="updateName">改名字</button>
-    <button @click="updateBrandName">改品牌名字</button>
   </div>
 </template>
 
 <script lang='ts'>
 /**
- * 学习目标：
- *    watch 侦听器(监听), 接收三个参数
- *      1. 参数1: 监视的数据源
- *      2. 参数2: 回调函数
- *      3. 参数3: 额外的配置
+ * 单个元素：先申明ref响应式数据，返回给模版使用，通过ref绑定数据
+ * 
+ * 遍历的元素：先定义一个空数组，定一个函数获取元素，返回给模版使用，通过ref绑定这个函数
+ * 有一个边界问题：组件更新的时候会重复的设置dom元素给数组
  */
-import { reactive, ref, watch } from "vue";
-
-type BrandObj = {
-  name: string
-}
-
-type PersonObj = {
-  name: string;
-  age: number;
-  brand:BrandObj;
-};
+import {onMounted, ref} from 'vue'
 
 export default {
   name: "App",
   setup() {
-    const count = ref(0);
-    const updateCount = () => {
-      count.value++;
-    };
-
-    watch(
-      count,
-      (newVal, oldVal) => {
-        console.log(newVal, oldVal, "===newVal,oldVal");
-      },
-      {
-        // immediate: true, //是否立即调用一次
-        // deep: true, //是否开启深度监听
-      }
-    );
-
-    const obj: PersonObj = reactive({
-      name: "小王",
-      age: 18,
-      brand: {
-        id: 1,
-        name: '宝马'
-      }
-    });
-
-    const updateName = () => {
-      obj.name = "小李";
-    };
-
-    const  updateBrandName = () =>{
-      obj.brand.name = '大众'
-    }
-
-    // 2.监听一个reactive数据
-    watch(obj,(newVal, oldVal) => {
-      console.log('数据变化了吗1',obj,newVal,oldVal);
+    // 1.  获取单个元素
+    // 1.1 先定义一个空的响应式数据ref定义的
+    const box  = ref(null)
+    // 1.2 setup中返回改数据，你想获取那个dom元素，就在改元素上使用ref属性绑定该值即可。
+    onMounted(() => {
+      console.log(box,box.value,'=====dom创建完毕');
     })
 
-    // 2.1 监听对象的某个属性的变化
-    // 需要写成函数返回该属性的方式才能监听到
-    watch(() =>obj.brand,(newVal, oldVal)=>{
-      console.log('数据变化了吗2',obj.brand,newVal,oldVal);
-    },{
-      // 2.2. 需要深度监听
-      deep: true,
-      // 2.2. 想默认触发
-      // immediate: true
-    })
-
-    // 3. 监听多个数据的变化
-    watch([count,obj],(newVal, oldVal)=>{
-      console.log(newVal, oldVal,'多个数据变化了吗？');
-    })
-
-    return { count, updateCount, obj, updateName,updateBrandName };
+    return { box};
   },
 };
 </script>
