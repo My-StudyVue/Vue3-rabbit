@@ -9,6 +9,8 @@
 </template>
 
 <script lang='ts'>
+//computed函数，是用来定义计算属性的，计算属性不能修改。
+//computed对象，get获取计算属性的值，set监听计算属性改变
 import { computed, ref } from "vue";
 export default {
   name: "App",

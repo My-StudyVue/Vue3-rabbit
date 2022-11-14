@@ -15,18 +15,23 @@
 // 总结： 体会组合API的写法，尝试组织可读性高的代码。
 import { onMounted, onUnmounted, reactive, ref, toRefs } from "vue";
 
-const useMouse = () => {
+interface Obj {
+  x: number;
+  y: number;
+}
+
+const useMouse = (): Obj => {
   /**
    * 1.   记录鼠标坐标
    */
   // 1.1  申明一个响应式数据，他是一个对象，包含x、y
-  const mouse = reactive({
+  const mouse: Obj = reactive({
     x: 0,
     y: 0,
   });
 
   // 1.3修改响应式数据
-  const move = (e) => {
+  const move = (e): void => {
     mouse.x = e.pageX;
     mouse.y = e.pageY;
   };
@@ -73,14 +78,14 @@ export default {
     // });
 
     // 封装成函数写法
-    const mouse = useMouse();
+    const mouse: Obj = useMouse();
 
-    const { x, y } = toRefs(mouse);
+    const { x, y } = toRefs<Obj>(mouse);
 
     /**
      * 2.数字累加
      */
-    const count = ref(0);
+    const count = ref<number>(0);
     const add = () => {
       count.value++;
     };
