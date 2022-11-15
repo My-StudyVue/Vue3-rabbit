@@ -11,7 +11,15 @@
 
 import { createApp } from "vue";
 import App from "./App.vue"
+
+// 1.引入全局组件
+import Card from './components/Card.vue'
+
 const app = createApp(App)
+
+//挂载到app上
+app.component('Card', Card)
+
 app.mount('#app')
 
 // import { createApp } from 'vue'
