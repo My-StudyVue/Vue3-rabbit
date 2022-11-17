@@ -18,10 +18,6 @@ onMounted(async() =>{
 // @import url("@/assets/styles/variables.less");
 // @import url("@/assets/styles/mixins.less");
 
-@import "./assets/styles/variables.less";
-@import "./assets/styles/mixins.less";
-
-
 h1{
   color: @warnColor;
   .hoverShadow()
