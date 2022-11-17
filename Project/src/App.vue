@@ -1,33 +1,15 @@
 <script setup lang="ts">
-import request  from './utils/request'
-import {onMounted} from 'vue'
-
-onMounted(async() =>{
-  const res = await request.get("/home/index")
-  console.log(res);
-  
-})
+// 在TS项目中，建议作为局部组件主动导入，组件有更好的 TS 类型检查
+import { RouterView } from "vue-router";
 </script>
 
 <template>
-   <div>
-    <p>哈哈哈</p>
-    <ul>
-      <li>123</li>
-      <li>456</li>
-    </ul>
-    <h1>这是大标题</h1>
-  </div>
+  <!-- 鼠标悬停到组件中有TS类型提示，更安全 -->
+  <RouterView />
 </template>
 
 <style lang="less">
 // 必须导入 variables.less
 // @import url("@/assets/styles/variables.less");
 // @import url("@/assets/styles/mixins.less");
-
-h1{
-  color: @warnColor;
-  .hoverShadow()
-}
-
 </style>
