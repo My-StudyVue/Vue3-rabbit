@@ -10,7 +10,14 @@ onMounted(async() =>{
 </script>
 
 <template>
-  <h1>Vue3+TS+VueRouter4+Pinia-新版小兔鲜儿</h1>
+   <div>
+    <p>哈哈哈</p>
+    <ul>
+      <li>123</li>
+      <li>456</li>
+    </ul>
+    <h1>这是大标题</h1>
+  </div>
 </template>
 
 <style lang="less">
