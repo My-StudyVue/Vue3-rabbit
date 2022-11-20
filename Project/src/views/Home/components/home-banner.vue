@@ -1,0 +1,28 @@
+<template>
+  <div class="home-banner">banner</div>
+</template>
+
+<script lang='ts'>
+export default {
+  name: 'home-banner',
+  components: {},
+  mixins: [],
+
+  // props: {},
+  setup(props, context) {
+
+    return {}
+  },
+}
+</script>
+
+<style lang='less' scoped>
+.home-banner {
+  width: 1240px;
+  height: 500px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 98;
+}
+</style>
