@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+
+import request from '@/utils/request'
 
 // 定义 Store, 命名建议： useXxxxStore
 // 参数1：Store 的唯一标识
@@ -8,7 +9,7 @@ export const useHomeStore = defineStore('home', {
   // 状态,相当于组件的 data
   state() {
     return {
-      money: 15000,
+      categoryList: [],
     }
   },
   // 相当于组件的 computed
@@ -17,7 +18,10 @@ export const useHomeStore = defineStore('home', {
   },
   // 函数/方法,相当于组件的 methods
   actions: {
-
+    async getAllCategories() {
+      const res = await request.get('/home/category/head')
+      console.log(res, '==res');
+    }
   },
 })
 

@@ -34,8 +34,8 @@ export default {
 
   props: {},
   setup(props, context) {
-    const home = useHomeStore()
-    console.log(home, 'home');
+    const { home } = useHomeStore()
+    home.getAllCategories()
   },
 }
 
