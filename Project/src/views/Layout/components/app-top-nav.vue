@@ -26,9 +26,9 @@ export default {
   name: 'app-top-nav',
   components: {},
   mixins: [],
-  props: {},
+  // props: {},
   setup(props, context) {
-    return 
+    return
   },
 }
 </script>
@@ -36,26 +36,31 @@ export default {
 <style lang='less' scoped>
 .app-top-nav {
   background: #333;
+
   ul {
     display: flex;
     height: 53px;
     justify-content: flex-end;
     align-items: center;
+
     li {
       a {
         padding: 0 15px;
         color: #cdcdcd;
         line-height: 1;
         display: inline-block;
+
         i {
           font-size: 14px;
           margin-right: 2px;
         }
+
         &:hover {
           color: @primaryColor;
         }
       }
-      ~ li {
+
+      ~li {
         a {
           border-left: 2px solid #666;
         }

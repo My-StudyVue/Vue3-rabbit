@@ -71,7 +71,7 @@ export default {
   components: {},
   mixins: [],
 
-  props: {},
+  // props: {},
   setup(props, context) {
 
   },

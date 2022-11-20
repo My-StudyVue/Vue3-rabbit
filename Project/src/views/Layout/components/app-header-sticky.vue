@@ -27,7 +27,7 @@ export default {
   },
   mixins: [],
 
-  props: {},
+  // props: {},
   setup(props, context) {
     // 控制是否显示吸顶组件
     let isShow = ref(false)

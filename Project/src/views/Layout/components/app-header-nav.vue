@@ -14,10 +14,17 @@ import useStore from '@/store';
 
 export default {
   name: 'app-header-nav',
+  /**
+   * 报错信息
+   * 不能将类型“{}”分配给类型“ComponentProps<DefineComponent<Readonly<ComponentPropsOptions<Data>>, { home: Store<"home", { categoryList: CategoryList; }, {}, { getAllCategories(): Promise<...>; }>; }, ... 9 more ..., { ...; } | {}>>”。
+   * 
+   * 解决：
+   * 注释 props: {},
+   */
   components: {},
   mixins: [],
 
-  props: {},
+  // props: {},
   setup(props, context) {
     const { home } = useStore()
     return { home }
