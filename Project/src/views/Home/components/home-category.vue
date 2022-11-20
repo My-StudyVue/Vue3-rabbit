@@ -1,16 +1,21 @@
 <template>
   <div class="home-category">
     <ul class="menu">
-      <li v-for="i in 9" :key="i">
-        <RouterLink to="/">{{ '居家' }}</RouterLink>
-        <RouterLink to="/">{{ '茶咖酒具' }}</RouterLink>
-        <RouterLink to="/">{{ '水具杯壶' }}</RouterLink>
+      <li v-for="item in leftCategoryList" :key="item.id">
+        <RouterLink to="/">{{ item.name }}</RouterLink>
+        <RouterLink v-for="item2 in item.children" :key="item2.id" to="/">
+          {{ item2.name }}
+        </RouterLink>
       </li>
+      <!-- 弹层layer位置 -->
     </ul>
   </div>
 </template>
 
 <script lang='ts'>
+import useStore from '@/store';
+import { computed } from '@vue/reactivity';
+
 export default {
   name: 'home-category',
   components: {},
@@ -18,8 +23,20 @@ export default {
 
   // props: {},
   setup(props, context) {
+    // 获取 Pinia 中的 home 模块，分类数据为 home.categoryList 
+    const { home } = useStore()
 
-    return {}
+    //计算：处理左侧分类所需的数据格式
+    const leftCategoryList = computed(() => {
+      return home.categoryList.map(item => {
+        return {
+          ...item,
+          children: item.children.slice(0, 2)
+        }
+      })
+    })
+
+    return { leftCategoryList }
   },
 }
 </script>

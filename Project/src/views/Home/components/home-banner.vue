@@ -18,11 +18,11 @@ export default {
 
 <style lang='less' scoped>
 .home-banner {
-  width: 1240px;
-  height: 500px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 98;
+  // width: 1240px;
+  // height: 500px;
+  // position: absolute;
+  // left: 0;
+  // top: 0;
+  // z-index: 98;
 }
 </style>
