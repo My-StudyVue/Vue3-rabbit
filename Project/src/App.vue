@@ -4,15 +4,6 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <ul>
-    <li>
-      <RouterLink to="/">布局容器</RouterLink>
-    </li>
-    <li>
-      <RouterLink to="/login">登录页</RouterLink>
-    </li>
-  </ul>
-
   <!-- 鼠标悬停到组件中有TS类型提示，更安全 -->
   <RouterView />
 </template>
