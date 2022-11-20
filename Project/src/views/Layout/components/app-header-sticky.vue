@@ -1,5 +1,5 @@
 <template>
-  <div class="app-header-sticky" :class="{ show: true }">
+  <div class="app-header-sticky" :class="{ show: isShow }">
     <div class="container">
       <RouterLink class="logo" to="/"></RouterLink>
       <AppHeaderNav />
@@ -12,6 +12,7 @@
 </template>
 
 <script lang='ts'>
+import { onMounted, onUnmounted, ref } from 'vue';
 import AppHeaderNav from './app-header-nav.vue';
 export default {
   name: 'app-header-sticky',
@@ -22,8 +23,23 @@ export default {
 
   props: {},
   setup(props, context) {
+    // 控制是否显示吸顶组件
+    const isShow = ref(false)
 
-    return {}
+    // 考虑优化，组件挂载时绑定事件，组件卸载时移除事件
+    const handleScroll = () => {
+      const y = document.documentElement.scrollTop;
+      isShow.value = y > 78
+    }
+
+    onMounted(() => {
+      window.addEventListener('scroll', handleScroll)
+    })
+    onUnmounted(() => {
+      window.removeEventListener('scroll', handleScroll)
+    })
+
+    return { isShow }
   },
 }
 </script>
