@@ -1,5 +1,6 @@
 <template>
-  <div class="app-header-sticky" :class="{ show: isShow }">
+  <div class="app-header-sticky" :class="{ show: y >= 78 }">
+    <!-- <div class="app-header-sticky" :class="{ show: isShow }"></div> -->
     <div class="container">
       <RouterLink class="logo" to="/"></RouterLink>
       <AppHeaderNav />
@@ -13,7 +14,12 @@
 
 <script lang='ts'>
 import { onMounted, onUnmounted, ref } from 'vue';
+
+// vueuse 中导入获取屏幕滚动数据的函数
+import { useWindowScroll } from '@vueuse/core'
+
 import AppHeaderNav from './app-header-nav.vue';
+
 export default {
   name: 'app-header-sticky',
   components: {
@@ -24,22 +30,27 @@ export default {
   props: {},
   setup(props, context) {
     // 控制是否显示吸顶组件
-    const isShow = ref(false)
+    let isShow = ref(false)
 
     // 考虑优化，组件挂载时绑定事件，组件卸载时移除事件
-    const handleScroll = () => {
-      const y = document.documentElement.scrollTop;
-      isShow.value = y > 78
-    }
+    // const handleScroll = () => {
+    //   const y = document.documentElement.scrollTop;
+    //   isShow.value = y >= 78
+    // }
 
-    onMounted(() => {
-      window.addEventListener('scroll', handleScroll)
-    })
-    onUnmounted(() => {
-      window.removeEventListener('scroll', handleScroll)
-    })
+    // onMounted(() => {
+    //   window.addEventListener('scroll', handleScroll)
+    // })
+    // onUnmounted(() => {
+    //   window.removeEventListener('scroll', handleScroll)
+    // })
 
-    return { isShow }
+    // 解构出 y 表示垂直方向滚动值，y 是 ref 响应式数据，可直接用于模板绑定
+    const { y } = useWindowScroll()
+
+    // 这样写 报错 运算符“>=”不能应用于类型“Ref<number>”和“number”。
+    // isShow.value = y >= 78
+    return { y }
   },
 }
 </script>
