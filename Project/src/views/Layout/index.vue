@@ -4,6 +4,9 @@
   <!-- 头部布局 -->
   <AppHeader />
 
+  <!-- 头部吸顶组件 -->
+  <AppHeaderSticky />
+
   <main class="app-body">
     <!-- 预留路由出口，添加添加 :key 解决路由缓存的问题 -->
     <!-- <RouterView :key="$route.fullPath" /> -->
@@ -21,6 +24,7 @@ import { RouterView } from "vue-router";
 import AppTopNav from "./components/app-top-nav.vue";
 import AppHeader from "./components/app-header.vue";
 import AppFooter from "./components/app-footer.vue";
+import AppHeaderSticky from "./components/app-header-sticky.vue";
 
 import useHomeStore from "@/store"
 export default {
@@ -29,6 +33,7 @@ export default {
     AppTopNav,
     AppHeader,
     AppFooter,
+    AppHeaderSticky,
   },
   mixins: [],
 
