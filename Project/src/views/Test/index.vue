@@ -6,6 +6,8 @@
   <!-- <Skeleton :height="30" :width="100" bg="pink" /> -->
 
   <!-- 鼠标悬停检查 TS 类型 -->
+
+  <!-- 🐛全局注册问题：鼠标悬停为 any，失去 TS 类型检查 -->
   <XtxButton type="primary" size="large">按钮</XtxButton>
   <XtxSkeleton :height="30" :width="100" bg="pink" />
 </template>
@@ -16,15 +18,15 @@
 // import Skeleton from '@/components/XtxUI/Skeleton/index.vue'
 
 // 同一个 import 可以同时导入多个组件
-import { XtxButton, XtxSkeleton } from "@/components/XtxUI";
+// import { XtxButton, XtxSkeleton } from "@/components/XtxUI";
 export default {
   name: 'index',
   components: {
     // Button,
     // Skeleton,
 
-    XtxButton,
-    XtxSkeleton,
+    // XtxButton,
+    // XtxSkeleton,
   },
   mixins: [],
 

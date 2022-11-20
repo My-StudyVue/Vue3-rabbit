@@ -18,4 +18,10 @@ const app = createApp(App)
 app.use(router);
 // 使用 pinia
 app.use(pinia)
+
+
+//测试全局注册
+import XtxUI from "@/components/XtxUI";
+app.use(XtxUI)
+
 app.mount('#app')

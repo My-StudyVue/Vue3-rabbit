@@ -1,3 +1,5 @@
+import type { App, Plugin } from 'vue'
+
 import Skeleton from "./Skeleton/Skeleton.vue";
 import Slider from "./Slider/index.vue";
 import More from "./More/index.vue";
@@ -13,7 +15,6 @@ import Dialog from "./Dialog/index.vue";
 import InfiniteLoad from "./InfiniteLoad/index.vue";
 import Tabs from "./Tabs/index.vue";
 import TabPane from "./Tabs/pane.vue";
-import type { App, Plugin } from "vue";
 
 // 统一出口和统一组件命名前缀，用户可以按需导入组件库的组件
 // PS：按需导入后，有 TS 类型提示
