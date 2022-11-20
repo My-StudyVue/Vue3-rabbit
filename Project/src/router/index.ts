@@ -5,36 +5,36 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/",
     component: () => import("@/views/Layout/index.vue"), //首页布局容器 Layout
-    // children: [
-    //   {
-    //     path: "/",
-    //     component: () => import("@/views/Home/index.vue")
-    //   },
-    //   {
-    //     path: "/category/:id",
-    //     component: () => import("@/views/Category/index.vue"), //分类
-    //   },
-    //   {
-    //     path: "/goods/:id",
-    //     component: () => import("@/views/Goods/index.vue"), //商品详情
-    //   },
-    //   {
-    //     path: "/cart",
-    //     component: () => import("@/views/Cart/index.vue"), //购物车
-    //   },
-    //   {
-    //     path: "/checkout",
-    //     component: () => import("@/views/Checkout/index.vue"), //填写订单
-    //   },
-    //   {
-    //     path: "/pay",
-    //     component: () => import("@/views/Pay/index.vue"), //支付
-    //   },
-    //   {
-    //     path: "/pay/result",
-    //     component: () => import("@/views/Pay/result.vue"), //支付结果
-    //   },
-    // ],
+    children: [
+      {
+        path: "/",
+        component: () => import("@/views/Home/index.vue")
+      },
+      // {
+      //   path: "/category/:id",
+      //   component: () => import("@/views/Category/index.vue"), //分类
+      // },
+      // {
+      //   path: "/goods/:id",
+      //   component: () => import("@/views/Goods/index.vue"), //商品详情
+      // },
+      // {
+      //   path: "/cart",
+      //   component: () => import("@/views/Cart/index.vue"), //购物车
+      // },
+      // {
+      //   path: "/checkout",
+      //   component: () => import("@/views/Checkout/index.vue"), //填写订单
+      // },
+      // {
+      //   path: "/pay",
+      //   component: () => import("@/views/Pay/index.vue"), //支付
+      // },
+      // {
+      //   path: "/pay/result",
+      //   component: () => import("@/views/Pay/result.vue"), //支付结果
+      // },
+    ],
   },
   {
     path: "/login",
