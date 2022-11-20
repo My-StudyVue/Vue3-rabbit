@@ -1,6 +1,7 @@
 <template>
   <div class="home-category">
-    <ul class="menu">
+    <ul class="menu" v-if="leftCategoryList.length > 0">
+      <!-- 左侧分类 -->
       <li v-for="item in leftCategoryList" :key="item.id">
         <RouterLink to="/">{{ item.name }}</RouterLink>
         <RouterLink v-for="item2 in item.children" :key="item2.id" to="/">
@@ -26,6 +27,15 @@
             </li>
           </ul>
         </div>
+      </li>
+    </ul>
+
+    <!-- 分类占位效果 v-else 互斥 -->
+    <ul class="menu" v-else>
+      <li v-for="i in 9" :key="i">
+        <XtxSkeleton :width="40" :height="20" style="margin-right: 5px" bg="rgba(255,255,255,0.2)" />
+        <XtxSkeleton :width="50" :height="20" bg="rgba(255,255,255,0.2)" style="margin-right: 5px" />
+        <XtxSkeleton :width="50" :height="20" bg="rgba(255,255,255,0.2)" />
       </li>
     </ul>
   </div>

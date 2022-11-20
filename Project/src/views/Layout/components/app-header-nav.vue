@@ -3,9 +3,17 @@
     <li class="home">
       <RouterLink to="/">首页</RouterLink>
     </li>
-    <li v-for="item in home.categoryList" :key="item.id">
-      <a href="#">{{ item.name }}</a>
-    </li>
+
+    <template v-if="home.categoryList.length > 0">
+      <li v-for="item in home.categoryList" :key="item.id">
+        <a href="#">{{ item.name }}</a>
+      </li>
+    </template>
+    <template v-else>
+      <li v-for="i in 9" :key="i">
+        <XtxSkeleton :width="60" :height="32" style="margin-right: 5px" bg="rgba(0,0,0,0.2)" />
+      </li>
+    </template>
   </ul>
 </template>
 
