@@ -1,0 +1,13 @@
+// 报错 执行 npm i @vue/tsconfig -D
+{
+  "extends": "@vue/tsconfig/tsconfig.node.json",
+  "include": [
+    "vite.config.*"
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "types": [
+      "node"
+    ]
+  }
+}

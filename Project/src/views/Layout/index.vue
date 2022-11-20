@@ -21,6 +21,8 @@ import { RouterView } from "vue-router";
 import AppTopNav from "./components/app-top-nav.vue";
 import AppHeader from "./components/app-header.vue";
 import AppFooter from "./components/app-footer.vue";
+
+import useHomeStore from "@/store"
 export default {
   name: 'index',
   components: {
@@ -32,7 +34,8 @@ export default {
 
   props: {},
   setup(props, context) {
-
+    const home = useHomeStore()
+    console.log(home, 'home');
   },
 }
 
