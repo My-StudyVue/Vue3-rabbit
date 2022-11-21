@@ -13,7 +13,7 @@
     <!-- 楼层面板组件和 home-entry 同级 -->
     <HomeNew />
 
-    <HomeHot/>
+    <HomeHot />
   </div>
 </template>
 
