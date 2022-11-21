@@ -29,6 +29,9 @@ export const useHomeStore = defineStore('home', {
       // 如果 TS 项目某些变量改名重构了
       // 需通过命令 npm run typecheck 主动调用TS检查，提前发现错误
       newGoodList: [] as GoodsItem[],
+
+      // 人气推荐
+      hotGoodsList: [] as GoodsItem[],
     }
   },
   // 相当于组件的 computed
@@ -61,6 +64,12 @@ export const useHomeStore = defineStore('home', {
     async getNewGoodList() {
       const res = await http<GoodsItem[]>('GET', '/home/new');
       this.newGoodList = res.data.result
+    },
+
+    // 获取人气推荐
+    async getHotGoodList(){
+      const res = await http<GoodsItem[]>('GET', '/home/hot');
+      this.hotGoodsList = res.data.result
     }
   },
 })

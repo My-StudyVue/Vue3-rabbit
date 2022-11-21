@@ -12,6 +12,8 @@
 
     <!-- 楼层面板组件和 home-entry 同级 -->
     <HomeNew />
+
+    <HomeHot/>
   </div>
 </template>
 
@@ -19,6 +21,7 @@
 import HomeCategory from './components/home-category.vue';
 import HomeBanner from './components/home-banner.vue';
 import HomeNew from './components/home-new.vue';
+import HomeHot from './components/home-hot.vue';
 
 export default {
   name: 'index',
@@ -26,6 +29,7 @@ export default {
     HomeCategory,
     HomeBanner,
     HomeNew,
+    HomeHot,
   },
   mixins: [],
 
