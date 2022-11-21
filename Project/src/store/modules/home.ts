@@ -12,12 +12,26 @@ import type { CategoryList, BannerList, GoodsItem } from '@/types'
 //   result: T;
 // }
 
+const storePersist = {
+  // 修改存储中使用的键名称，默认为当前 Store的 id
+  key: "rabbit-shop-home",
+  // 修改为 sessionStorage，默认为 localStorage
+  storage: window.sessionStorage,
+  // 🎉按需持久化，默认不写会存储全部
+  // 按需存储分类数据
+  paths: ["categoryList"],
+}
+
 // 定义 Store, 命名建议： useXxxxStore
 // 参数1：Store 的唯一标识
 // 参数2：配置对象，可以提供 state actions getters
 export const useHomeStore = defineStore('home', {
   // 持久化插件 - 默认存所有模块数据
-  persist: true,
+  // persist: true,
+
+  // 持久化插件 - 进阶用法
+  // 持久化存储插件其他配置 ---> 写成对象的形式进行配置
+  persist: storePersist,
 
   // 状态,相当于组件的 data
   state() {
