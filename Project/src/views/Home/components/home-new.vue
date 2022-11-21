@@ -6,7 +6,7 @@
       </template>
 
       <!-- 面板内容 -->
-      <ul class="goods-list">
+      <ul class="goods-list" v-if="home.newGoodList.length > 0">
         <li v-for="item in home.newGoodList" :key="item.id">
           <RouterLink to="/">
             <img :src="item.picture" alt="">
@@ -15,18 +15,22 @@
           </RouterLink>
         </li>
       </ul>
+
+      <!-- 骨架组件 - 优化默认显示结构 -->
+      <ul class="goods-list" v-else>
+        <li v-for="item in 4" :key="item">
+          <XtxSkeleton :width="306" :height="406" bg="rgba(255,255,255,0.2)" />
+        </li>
+      </ul>
     </HomePanel>
   </div>
 </template>
 
 <script lang='ts'>
-import { ref } from 'vue';
-
-import { useIntersectionObserver } from '@vueuse/core'
-
 import HomePanel from './home-panel.vue';
 
 import useStore from '@/store';
+import { useObserver } from '@/hooks';
 export default {
   name: 'home-new',
   components: {
@@ -38,23 +42,8 @@ export default {
   setup(props, context) {
     const { home } = useStore()
 
-    // 通过 ref 获得组件实例
-    const target = ref(null)
+    const { target } = useObserver(home.getNewGoodList)
 
-    const { stop } = useIntersectionObserver(
-      // target 被检测的目标元素
-      target,
-      // isIntersecting 是否进入可视区域
-      ([{ isIntersecting }]) => {
-        // 在此处可根据isIntersecting来判断，然后做业务
-        console.log('是否进入可视区域', isIntersecting);
-        if (isIntersecting) {
-          home.getNewGoodList();
-
-          // 停止重复监听防止重复调用接口
-          stop()
-        }
-      })
     return { home, target }
   },
 }
