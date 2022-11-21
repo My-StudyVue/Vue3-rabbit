@@ -25,7 +25,9 @@ const storePersist = {
 // 定义 Store, 命名建议： useXxxxStore
 // 参数1：Store 的唯一标识
 // 参数2：配置对象，可以提供 state actions getters
-export const useHomeStore = defineStore('home', {
+// export const useHomeStore = defineStore('home', {
+export const useHomeStore = defineStore({
+  id: 'home',
   // 持久化插件 - 默认存所有模块数据
   // persist: true,
 
