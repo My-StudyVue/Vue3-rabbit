@@ -1,5 +1,6 @@
 <template>
   <div class="home-new">
+    <!-- 🚨 ref 需在模板中绑定目标元素 -->
     <HomePanel ref="target" title="新鲜好物" sub-title="新鲜出炉 品质靠谱">
       <template #right>
         <XtxMore path="/" />
@@ -42,6 +43,7 @@ export default {
   setup(props, context) {
     const { home } = useStore()
 
+    // 调用封装的请求按需加载函数，返回用于绑定DOM的目标元素ref
     const { target } = useObserver(home.getNewGoodList)
 
     return { home, target }

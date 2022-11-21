@@ -1,5 +1,6 @@
 <template>
   <div class="home-hot">
+    <!-- 🚨 ref 需在模板中绑定目标元素 -->
     <HomePanel ref="target" title="人气推荐" sub-title="人气爆款 不容错过">
 
       <!-- 面板内容 -->
@@ -40,7 +41,7 @@ export default {
   setup(props, context) {
     const { home } = useStore()
 
-    // 通过 ref 获得组件实例
+    // 调用封装的请求按需加载函数，返回用于绑定DOM的目标元素ref
     const { target } = useObserver(home.getHotGoodList)
     return { home, target }
   },

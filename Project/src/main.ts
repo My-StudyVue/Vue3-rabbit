@@ -12,12 +12,16 @@ import router from "./router";
 import { createPinia } from 'pinia'
 // 创建 pinia 实例
 const pinia = createPinia()
+// 引入pinia 持久化存储插件
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 const app = createApp(App)
 // 使用 vueRouter
 app.use(router);
 // 使用 pinia
 app.use(pinia)
+// pinia使用 持久化存储插件
+pinia.use(piniaPluginPersistedstate);
 
 
 //测试全局注册

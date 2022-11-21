@@ -16,6 +16,9 @@ import type { CategoryList, BannerList, GoodsItem } from '@/types'
 // 参数1：Store 的唯一标识
 // 参数2：配置对象，可以提供 state actions getters
 export const useHomeStore = defineStore('home', {
+  // 持久化插件 - 默认存所有模块数据
+  persist: true,
+
   // 状态,相当于组件的 data
   state() {
     return {
@@ -67,7 +70,7 @@ export const useHomeStore = defineStore('home', {
     },
 
     // 获取人气推荐
-    async getHotGoodList(){
+    async getHotGoodList() {
       const res = await http<GoodsItem[]>('GET', '/home/hot');
       this.hotGoodsList = res.data.result
     }
