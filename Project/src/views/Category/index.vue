@@ -1,19 +1,20 @@
 <template>
-  <div>Category</div>
+  <div>Category {{ $route.query.id }}</div>
 </template>
 
 <script lang='ts'>
 export default {
-  name:'index',
+  name: 'index',
   components: {},
-  mixins:[],
+  mixins: [],
 
   props: {},
-  setup(props,context){
+  setup(props, context) {
 
   },
 }
 
 </script>
 <style lang='less' scoped>
+
 </style>
