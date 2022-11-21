@@ -1,5 +1,7 @@
 import axios, { type Method } from "axios";
 
+import type { ApiRes } from '@/types'
+
 export const baseURL = "http://pcapi-xiaotuxian-front-devtest.itheima.net/";
 
 // 创建axios 实例
@@ -39,10 +41,10 @@ export default instance
 
 
 // 后端返回的接口数据格式
-interface ApiRes<T = unknown> {
-  msg: string;
-  result: T;
-}
+// interface ApiRes<T = unknown> {
+//   msg: string;
+//   result: T;
+// }
 
 /**
  * axios 二次封装，整合 TS 类型

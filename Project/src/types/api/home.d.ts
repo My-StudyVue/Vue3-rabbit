@@ -1,7 +1,15 @@
+// 后端返回的接口数据格式
+export type ApiRes<T> = {
+  code: string;
+  msg: string;
+  // 考虑到不同接口返回的 result 不同，用泛型占位
+  result: T;
+};
+
 // 分类数据单项类型
 export interface Goods {
-  desc: string;
   id: string;
+  desc: string;
   name: string;
   picture: string;
   price: string;
@@ -35,5 +43,17 @@ export interface Banner {
   type: string;
 }
 
-// 分类数据列表类型
+// 轮播图数据列表类型
 export type BannerList = Banner[];
+
+export interface NewGood {
+  id: string,
+  name: string,
+  desc: string,
+  picture: string,
+  price: string,
+  discount: string,
+  orderNum: number,
+}
+
+export type NewGoodList = NewGood[];
