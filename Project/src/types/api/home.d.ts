@@ -26,3 +26,14 @@ export interface Category {
 
 // 分类数据列表类型
 export type CategoryList = Category[];
+
+// 轮播图类型
+export interface Banner {
+  id: string;
+  imgUrl: string;
+  hrefUrl: string;
+  type: string;
+}
+
+// 分类数据列表类型
+export type BannerList = Banner[];

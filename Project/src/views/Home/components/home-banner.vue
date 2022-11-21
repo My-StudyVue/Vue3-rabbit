@@ -3,6 +3,7 @@
 </template>
 
 <script lang='ts'>
+import useStore from '@/store';
 export default {
   name: 'home-banner',
   components: {},
@@ -10,7 +11,8 @@ export default {
 
   // props: {},
   setup(props, context) {
-
+    const { home } = useStore()
+    home.getBannerList()
     return {}
   },
 }

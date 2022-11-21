@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 // import request from '@/utils/request'
 // 二次封装引用
 import { http } from '@/utils/request'
-import type { CategoryList } from '@/types'
+import type { CategoryList, BannerList } from '@/types'
 
 // 定义axios返回数据的类型
 // 原来的request 需要
@@ -21,6 +21,9 @@ export const useHomeStore = defineStore('home', {
     return {
       // 所有分类数据
       categoryList: [] as CategoryList,
+
+      // 轮播图数据
+      bannerList: [] as BannerList,
     }
   },
   // 相当于组件的 computed
@@ -29,6 +32,7 @@ export const useHomeStore = defineStore('home', {
   },
   // 函数/方法,相当于组件的 methods
   actions: {
+    // 获取分类数据
     async getAllCategories() {
       // 能用， res.data 的返回值类型为 any
       // const res = await request.get("/home/category/head");
@@ -38,7 +42,13 @@ export const useHomeStore = defineStore('home', {
       // 使用起来简洁很多
       const res = await http<CategoryList>("GET", "/home/category/head");
       this.categoryList = res.data.result
-    }
+    },
+
+    // 获取轮播图数据
+    async getBannerList() {
+      const res = await http<BannerList>('GET', '/home/banner');
+      this.bannerList = res.data.result
+    },
   },
 })
 
