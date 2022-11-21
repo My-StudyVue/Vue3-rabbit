@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 // import request from '@/utils/request'
 // 二次封装引用
 import { http } from '@/utils/request'
-import type { CategoryList, BannerList, NewGoodList } from '@/types'
+import type { CategoryList, BannerList, GoodsItem } from '@/types'
 
 // 定义axios返回数据的类型
 // 原来的request 需要
@@ -26,7 +26,9 @@ export const useHomeStore = defineStore('home', {
       bannerList: [] as BannerList,
 
       // 新鲜好物数据
-      newGoodList: [] as NewGoodList,
+      // 如果 TS 项目某些变量改名重构了
+      // 需通过命令 npm run typecheck 主动调用TS检查，提前发现错误
+      newGoodList: [] as GoodsItem[],
     }
   },
   // 相当于组件的 computed
@@ -44,6 +46,8 @@ export const useHomeStore = defineStore('home', {
 
       // 使用起来简洁很多
       const res = await http<CategoryList>("GET", "/home/category/head");
+      // 🎉恭喜已经有类型提醒了
+      // 左右类型一致了
       this.categoryList = res.data.result
     },
 
@@ -55,7 +59,7 @@ export const useHomeStore = defineStore('home', {
 
     // 获取新鲜好物
     async getNewGoodList() {
-      const res = await http<NewGoodList>('GET', '/home/new');
+      const res = await http<GoodsItem[]>('GET', '/home/new');
       this.newGoodList = res.data.result
     }
   },

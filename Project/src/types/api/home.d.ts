@@ -7,7 +7,7 @@ export type ApiRes<T> = {
 };
 
 // 分类数据单项类型
-export interface Goods {
+export interface CategoryGoods {
   id: string;
   desc: string;
   name: string;
@@ -17,23 +17,26 @@ export interface Goods {
   alt: string;
 };
 
-export interface Children {
+export interface CategoryChildren {
   id: string;
   name: string;
   picture: string;
-  goods: Goods[];
+  goods: CategoryGoods[];
 };
 
-export interface Category {
+export interface CategoryItem {
   id: string;
   name: string;
   picture: string;
-  children: Children[];
-  goods: Goods[];
+  children: CategoryChildren[];
+  goods: CategoryGoods[];
 };
+
+// 存一个更有语义的类型名字
+export type GoodsItem = CategoryGoods;
 
 // 分类数据列表类型
-export type CategoryList = Category[];
+export type CategoryList = CategoryItem[];
 
 // 轮播图类型
 export interface Banner {
@@ -45,15 +48,3 @@ export interface Banner {
 
 // 轮播图数据列表类型
 export type BannerList = Banner[];
-
-export interface NewGood {
-  id: string,
-  name: string,
-  desc: string,
-  picture: string,
-  price: string,
-  discount: string,
-  orderNum: number,
-}
-
-export type NewGoodList = NewGood[];
