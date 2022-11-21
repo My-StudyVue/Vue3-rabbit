@@ -1,5 +1,7 @@
 <template>
-  <div class="home-banner">banner</div>
+  <div class="home-banner">
+    <XtxSlider :sliders="home.bannerList" auto-play></XtxSlider>
+  </div>
 </template>
 
 <script lang='ts'>
@@ -13,18 +15,18 @@ export default {
   setup(props, context) {
     const { home } = useStore()
     home.getBannerList()
-    return {}
+    return { home }
   },
 }
 </script>
 
 <style lang='less' scoped>
 .home-banner {
-  // width: 1240px;
-  // height: 500px;
-  // position: absolute;
-  // left: 0;
-  // top: 0;
-  // z-index: 98;
+  width: 1240px;
+  height: 500px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 98;
 }
 </style>
