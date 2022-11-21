@@ -10,10 +10,10 @@ const routes: RouteRecordRaw[] = [
         path: "/",
         component: () => import("@/views/Home/index.vue")
       },
-      // {
-      //   path: "/category/:id",
-      //   component: () => import("@/views/Category/index.vue"), //分类
-      // },
+      {
+        path: "/category/:id",
+        component: () => import("@/views/Category/index.vue"), //分类
+      },
       // {
       //   path: "/goods/:id",
       //   component: () => import("@/views/Goods/index.vue"), //商品详情

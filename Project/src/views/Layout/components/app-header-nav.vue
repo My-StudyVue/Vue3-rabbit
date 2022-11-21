@@ -6,7 +6,7 @@
 
     <template v-if="home.categoryList.length > 0">
       <li v-for="item in home.categoryList" :key="item.id">
-        <a href="#">{{ item.name }}</a>
+        <RouterLink :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
       </li>
     </template>
     <template v-else>
