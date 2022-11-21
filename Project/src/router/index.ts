@@ -53,6 +53,14 @@ const router = createRouter({
   history: createWebHashHistory(),
   // 配置路由规则，写法和之前一样
   routes,
+
+  // VueRouter@4官网 - 进阶 - 滚动行为
+  // 始终滚动到顶部
+  scrollBehavior(to, from, savedPosition) {
+    // return 期望滚动到哪个的位置
+    return { top: 0 }
+  }
+
 })
 
 export default router
