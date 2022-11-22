@@ -9,6 +9,18 @@
         <RouterLink :to="`/category/${item.id}`" :key="$route.fullPath" :class="curIndex === index ? 'active' : ''">{{
             item.name
         }}</RouterLink>
+
+        <!-- 鼠标悬浮展示顶级类目 -->
+        <div class="layer">
+          <ul>
+            <li v-for="item in category.topCategory?.children" :key="item.id">
+              <RouterLink :to="`/category/${item.id}`" :key="$route.fullPath">
+                <img :src="item.picture" alt="" />
+                <p class="name">{{ item.name }}</p>
+              </RouterLink>
+            </li>
+          </ul>
+        </div>
       </li>
     </template>
     <template v-else>
@@ -37,14 +49,15 @@ export default {
 
   // props: {},
   setup(props, context) {
-    const { home } = useStore()
+    const { category, home } = useStore()
 
-    let curIndex = ref(0)
+    let curIndex = ref(-1)
 
     const itemClick = (index: number) => {
       curIndex.value = index
     }
-    return { home, itemClick, curIndex }
+
+    return { home, category, itemClick, curIndex }
   },
 }
 </script>
@@ -78,11 +91,32 @@ export default {
         border-bottom: 1px solid @primaryColor;
       }
     }
+  }
+}
 
-    // &.active {
-    //   color: @primaryColor;
-    //   border-bottom: 10px solid @primaryColor;
-    // }
+.layer {
+  width: 1240px;
+  background-color: #fff;
+  position: absolute;
+  left: -200px;
+  top: 56px;
+  height: 0;
+  overflow: hidden;
+  opacity: 1;
+  box-shadow: 0 0 5px #ccc;
+  transition: all .2s .1s;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 70px;
+    align-items: center;
+    height: 132px;
+
+    li {
+      width: 110px;
+      text-align: center;
+    }
   }
 }
 </style>
