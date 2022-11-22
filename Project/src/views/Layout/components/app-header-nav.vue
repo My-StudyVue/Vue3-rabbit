@@ -1,12 +1,14 @@
 <template>
   <ul class="app-header-nav">
-    <li class="home">
+    <li class="home" @click="itemClick(-1)">
       <RouterLink to="/">首页</RouterLink>
     </li>
 
     <template v-if="home.categoryList.length > 0">
-      <li v-for="item in home.categoryList" :key="item.id">
-        <RouterLink :to="`/category/${item.id}`" :key="$route.fullPath">{{ item.name }}</RouterLink>
+      <li v-for="(item, index) in home.categoryList" :key="item.id" @click="itemClick(index)">
+        <RouterLink :to="`/category/${item.id}`" :key="$route.fullPath" :class="curIndex === index ? 'active' : ''">{{
+            item.name
+        }}</RouterLink>
       </li>
     </template>
     <template v-else>
@@ -19,6 +21,7 @@
 
 <script lang='ts'>
 import useStore from '@/store';
+import { ref } from 'vue';
 
 export default {
   name: 'app-header-nav',
@@ -35,7 +38,13 @@ export default {
   // props: {},
   setup(props, context) {
     const { home } = useStore()
-    return { home }
+
+    let curIndex = ref(0)
+
+    const itemClick = (index: number) => {
+      curIndex.value = index
+    }
+    return { home, itemClick, curIndex }
   },
 }
 </script>
@@ -63,7 +72,17 @@ export default {
         color: @primaryColor;
         border-bottom: 1px solid @primaryColor;
       }
+
+      &.active {
+        color: @primaryColor;
+        border-bottom: 1px solid @primaryColor;
+      }
     }
+
+    // &.active {
+    //   color: @primaryColor;
+    //   border-bottom: 10px solid @primaryColor;
+    // }
   }
 }
 </style>

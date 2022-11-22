@@ -6,6 +6,10 @@
         <XtxBreadItem to="/">首页</XtxBreadItem>
         <XtxBreadItem>{{ category.topCategory?.name }}</XtxBreadItem>
       </XtxBread>
+
+      <!-- banner轮播图 -->
+      <XtxSlider :sliders="home.bannerList" auto-play></XtxSlider>
+
       <!-- 所有二级分类 -->
       <div class="sub-list">
         <h3>全部分类</h3>
@@ -33,10 +37,11 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 
 import GoodsItem from "./components/goods-item.vue";
+import HomeBanner from '@/views/Home/components/home-banner.vue';
 
 
 import useStore from "@/store";
@@ -46,6 +51,7 @@ export default {
   name: 'index',
   components: {
     GoodsItem,
+    HomeBanner,
   },
   mixins: [],
 
@@ -61,12 +67,20 @@ export default {
     // 组件挂载完毕，发送请求获取数据
     // const topCategory = ref<TopCategory>();
 
-    const { category } = useStore()
+    const { category, home } = useStore()
     onMounted(() => {
+      home.getBannerList()
       category.getTopCategory(id)
     });
 
-    return { category }
+    // 监听路由的变化
+    watch(() => route.params.id,
+      (newValue, oldValue) => {
+        category.getTopCategory(newValue)
+      },
+      { deep: true }
+    );
+    return { category, home }
   }
 }
 
