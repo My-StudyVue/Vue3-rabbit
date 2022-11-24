@@ -14,10 +14,14 @@ const routes: RouteRecordRaw[] = [
         path: "/category/:id",
         component: () => import("@/views/Category/index.vue"), //分类
       },
-      // {
-      //   path: "/goods/:id",
-      //   component: () => import("@/views/Goods/index.vue"), //商品详情
-      // },
+      {
+        path: '/category/sub/:id',
+        component: () => import('@/views/Category/Sub.vue') // 二级分类
+      },
+      {
+        path: "/goods/:id",
+        component: () => import("@/views/Goods/index.vue"), //商品详情
+      },
       // {
       //   path: "/cart",
       //   component: () => import("@/views/Cart/index.vue"), //购物车
