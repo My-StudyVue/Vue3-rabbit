@@ -6,7 +6,7 @@
       <!-- 面板内容 -->
       <ul class="goods-list" v-if="home.hotGoodsList.length > 0">
         <li v-for="item in home.hotGoodsList" :key="item.id">
-          <RouterLink to="/">
+          <RouterLink :to="`/goods/${item.id}`">
             <img :src="item.picture" alt="" />
             <p class="name">{{ item.title }}</p>
             <p class="desc">{{ item.alt }}</p>

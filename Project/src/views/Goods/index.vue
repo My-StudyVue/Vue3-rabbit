@@ -21,17 +21,20 @@
   </div>
 </template>
 
-<script lang='ts'>
-export default {
-  name:'index',
-  components: {},
-  mixins:[],
+<script lang='ts' setup>
+import {onMounted} from 'vue'
+import { useRoute } from 'vue-router';
 
-  props: {},
-  setup(props,context){
+import useStore from '@/store'
 
-  },
-}
+const route = useRoute() 
+const {id} = route.params
+
+const {goods} = useStore()
+
+onMounted(() =>{
+  goods.getGoodsDetails(id)
+})
 
 </script>
 <style lang='less' scoped>
