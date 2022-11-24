@@ -7,6 +7,7 @@
           <!-- 图片预览区 -->
           <div class="goods-image">
             <!-- 图片预览组件 -->
+            <XtxImageView :image-list="goods.goodsDetail.mainPictures" />
           </div>
           <!-- 统计数量 -->
           <ul class="goods-sales">
