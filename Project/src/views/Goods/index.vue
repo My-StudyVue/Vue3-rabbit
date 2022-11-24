@@ -2,7 +2,7 @@
   <div class="xtx-goods-page">
     <div class="container">
       <!-- 商品信息 -->
-      <div class="goods-info">
+      <div v-if="goods.goodsDetail" class="goods-info">
         <div class="media">
           <!-- 图片预览区 -->
           <div class="goods-image">
@@ -72,6 +72,10 @@
           <!-- 按钮组件 -->
         </div>
       </div>
+
+      <!-- 添加 loading 效果 -->
+      <div v-else class="goods-info xtx-loading"></div>
+
       <!-- 商品详情 -->
       <div class="goods-footer">
         <div class="goods-article">
@@ -278,5 +282,9 @@ onMounted(() => {
   min-height: 600px;
   background: #fff;
   margin-top: 20px;
+}
+
+.xtx-loading {
+  background: #fff url(@/assets/images/loading.gif) no-repeat center;
 }
 </style>
